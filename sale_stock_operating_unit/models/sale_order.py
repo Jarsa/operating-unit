@@ -2,7 +2,7 @@
 # Jordi Ballester Alomar
 # Copyright 2015-19 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
-from odoo import _, api, fields, models
+from odoo import SUPERUSER_ID, _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -14,7 +14,14 @@ class SaleOrder(models.Model):
         res = super(SaleOrder, self)._default_warehouse_id()
         team = self._get_default_team()
         warehouses = self.env["stock.warehouse"].search(
-            [("operating_unit_id", "=", team.sudo().operating_unit_id.id)], limit=1
+            [
+                (
+                    "operating_unit_id",
+                    "=",
+                    team.with_user(SUPERUSER_ID).operating_unit_id.id,
+                )
+            ],
+            limit=1,
         )
         if warehouses:
             return warehouses
@@ -53,7 +60,6 @@ class SaleOrder(models.Model):
             ):
                 self.team_id = False
 
-    @api.multi
     @api.constrains("operating_unit_id", "warehouse_id")
     def _check_wh_operating_unit(self):
         for rec in self:
