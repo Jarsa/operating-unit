@@ -5,7 +5,7 @@
 
 {
     "name": "Operating Unit in CRM",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.1",
     "author": "Eficent, "
     "Serpent Consulting Services Pvt. Ltd.,"
     "Odoo Community Association (OCA)",

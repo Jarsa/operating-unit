@@ -4,7 +4,7 @@
 
 {
     "name": "Stock Landed Cost Operating Unit",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.1",
     "license": "LGPL-3",
     "author": "Jarsa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/operating-unit",

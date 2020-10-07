@@ -3,7 +3,7 @@
 
 {
     "name": "Stock Landed Cost Sequence by Operating Unit",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.1",
     "license": "LGPL-3",
     "category": "stock",
     "author": "Jarsa, Odoo Community Association (OCA)",

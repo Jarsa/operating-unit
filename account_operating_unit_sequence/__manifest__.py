@@ -3,7 +3,7 @@
 
 {
     "name": "Accounting Sequence by Operating Unit",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.1",
     "license": "AGPL-3",
     "category": "Accounting & Finance",
     "author": "Ecosoft, Odoo Community Association (OCA)",
