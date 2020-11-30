@@ -52,7 +52,6 @@ class SaleOrder(models.Model):
 
     @api.onchange("warehouse_id")
     def onchange_warehouse_id(self):
-        self.onchange_operating_unit_id()
         if self.warehouse_id:
             self.operating_unit_id = self.warehouse_id.operating_unit_id
             if (
