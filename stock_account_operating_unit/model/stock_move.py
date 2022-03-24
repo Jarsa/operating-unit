@@ -106,6 +106,7 @@ class StockMove(models.Model):
                     )
                     am = (
                         self.env["account.move"]
+                        .sudo()
                         .with_context(
                             force_company=move.location_id.company_id.id,
                             company_id=move.company_id.id,
@@ -120,5 +121,5 @@ class StockMove(models.Model):
                             }
                         )
                     )
-                    am.post()
+                    am.sudo().action_post()
             return res
