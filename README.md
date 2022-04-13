@@ -1,4 +1,5 @@
-[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/213/14.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-operating-unit-213)
+
+[![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo=OCA/operating-unit&target_branch=14.0)
 [![Build Status](https://travis-ci.com/OCA/operating-unit.svg?branch=14.0)](https://travis-ci.com/OCA/operating-unit)
 [![codecov](https://codecov.io/gh/OCA/operating-unit/branch/14.0/graph/badge.svg)](https://codecov.io/gh/OCA/operating-unit)
 [![Translation Status](https://translation.odoo-community.org/widgets/operating-unit-14-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/operating-unit-14-0/?utm_source=widget)
@@ -45,7 +46,7 @@ addon | version | maintainers | summary
 [purchase_requisition_operating_unit_access_all](purchase_requisition_operating_unit_access_all/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Access all OUs' Purchase Agreement
 [sales_team_operating_unit](sales_team_operating_unit/) | 14.0.1.0.0 |  | Sales Team Operating Unit
 [stock_operating_unit](stock_operating_unit/) | 14.0.1.0.2 |  | Adds the concept of operating unit (OU) in stock management
-[stock_operating_unit_access_all](stock_operating_unit_access_all/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Access all OUs' Stock
+[stock_operating_unit_access_all](stock_operating_unit_access_all/) | 14.0.1.0.1 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Access all OUs' Stock
 
 [//]: # (end addons)
 
@@ -55,12 +56,11 @@ addon | version | maintainers | summary
 
 This repository is licensed under [AGPL-3.0](LICENSE).
 
-However, each module can have a totally different license, as long as they adhere to OCA
+However, each module can have a totally different license, as long as they adhere to Odoo Community Association (OCA)
 policy. Consult each module's `__manifest__.py` file, which contains a `license` key
 that explains its license.
 
 ----
-
 OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit
 organization whose mission is to support the collaborative development of Odoo features
 and promote its widespread use.
