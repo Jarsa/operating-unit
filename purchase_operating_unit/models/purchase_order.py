@@ -50,7 +50,19 @@ class PurchaseOrder(models.Model):
 
     def _prepare_invoice(self):
         invoice_vals = super()._prepare_invoice()
-        invoice_vals["operating_unit_id"] = self.operating_unit_id.id
+        company_id = self._context.get("default_company_id", self.env.company.id)
+        domain = [
+            ("company_id", "=", company_id),
+            ("type", "=", "purchase"),
+            ("operating_unit_id", "=", self.operating_unit_id.id),
+        ]
+        journal_id = self.env["account.journal"].search(domain, limit=1).id
+        invoice_vals.update(
+            {
+                "operating_unit_id": self.operating_unit_id.id,
+                "journal_id": journal_id,
+            }
+        )
         return invoice_vals
 
 
