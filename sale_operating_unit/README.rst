@@ -17,7 +17,7 @@ Operating Unit in Sales
     :target: https://github.com/brain-tec/minditp/tree/15.0-mig-sale_operating_unit/sale_operating_unit
     :alt: brain-tec/minditp
 
-|badge1| |badge2| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module extends the Sales capabilities of Odoo and introduces the operating
 unit to the Sales Order. Security rules are defined to ensure that users can
@@ -74,8 +74,7 @@ Contributors
 * Sudhir Arya <sudhir.arya@serpentcs.com>
 * Darshan Patel <darshan.patel.serpencs@gmail.com>
 * Alan Ramos <alan.ramos@jarsa.com.mx>
-* Jorge Alberto Olvera Cuenca <jorge.olvera@jarsa.com>
-* Alejandro Padrón <alejandro.padron@bt-group.com>
+* Carlos Ramos - <cramosh@dmintegrations.eu>
 
 Maintainers
 ~~~~~~~~~~~
