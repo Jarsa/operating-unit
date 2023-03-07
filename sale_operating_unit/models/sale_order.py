@@ -65,7 +65,23 @@ class SaleOrder(models.Model):
     def _prepare_invoice(self):
         self.ensure_one()
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
-        invoice_vals["operating_unit_id"] = self.operating_unit_id.id
+        journal = self.env["account.journal"].search(
+            [
+                ("operating_unit_id", "=", self.operating_unit_id.id),
+                ("type", "=", "sale"),
+            ],
+            limit=1,
+        )
+        if not journal:
+            raise ValidationError(
+                _("You need to create a sales journal for this operating unit.")
+            )
+        invoice_vals.update(
+            {
+                "operating_unit_id": self.operating_unit_id.id,
+                "journal_id": journal.id,
+            }
+        )
         return invoice_vals
 
 
