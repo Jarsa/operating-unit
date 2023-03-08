@@ -89,7 +89,5 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     operating_unit_id = fields.Many2one(
-        related="order_id.operating_unit_id",
-        string="Operating Unit",
-        store=True,
+        related="order_id.operating_unit_id", string="Operating Unit", store=True,
     )
