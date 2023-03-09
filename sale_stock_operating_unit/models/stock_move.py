@@ -16,8 +16,7 @@ class StockMove(models.Model):
 
         values.update(
             {
-                "operating_unit_id": self.sale_line_id.operating_unit_id.id
-                or self.operating_unit_id.id
+                "operating_unit_id": self.operating_unit_id.id
             }
         )
 
