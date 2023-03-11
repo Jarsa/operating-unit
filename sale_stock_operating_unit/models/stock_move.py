@@ -14,10 +14,6 @@ class StockMove(models.Model):
         """
         values = super(StockMove, self)._get_new_picking_values()
 
-        values.update(
-            {
-                "operating_unit_id": self.operating_unit_id.id
-            }
-        )
+        values.update({"operating_unit_id": self.operating_unit_id.id})
 
         return values
