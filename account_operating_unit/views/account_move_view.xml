@@ -35,7 +35,7 @@
     <record id="view_move_line_tree_grouped" model="ir.ui.view">
         <field name="name">account.move.line.tree.grouped</field>
         <field name="model">account.move.line</field>
-        <field name="inherit_id" ref="account.view_move_line_tree_grouped" />
+        <field name="inherit_id" ref="account.view_move_line_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='account_id']" position="after">
                 <field
@@ -75,11 +75,7 @@
         <field name="inherit_id" ref="account.view_move_form" />
         <field name="arch" type="xml">
             <xpath expr="//group[@id='header_right_group']" position="inside">
-                <field
-                    name="operating_unit_id"
-                    options="{'no_create': True}"
-                    groups="operating_unit.group_multi_operating_unit"
-                />
+                <field name="operating_unit_id" options="{'no_create': True}" />
             </xpath>
             <field name="invoice_line_ids" position="attributes">
                 <attribute name="context">
@@ -90,8 +86,8 @@
                     'operating_unit_id': operating_unit_id}
                 </attribute>
             </field>
-            <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_account_id']"
+            <!-- <xpath
+                expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_distribution']"
                 position="attributes"
             >
                 <attribute name="domain">
@@ -102,14 +98,14 @@
                 </attribute>
             </xpath>
             <xpath
-                expr="//field[@name='invoice_line_ids']/form/sheet/group/field[@name='analytic_account_id']"
+                expr="//field[@name='invoice_line_ids']/form/sheet/group/field[@name='analytic_distribution']"
                 position="attributes"
             >
                 <attribute name="domain">
                     ['|', ('operating_unit_ids', '=', context.get('operating_unit_id',
                     False)), ('operating_unit_ids', '=', False)]
                 </attribute>
-            </xpath>
+            </xpath> -->
             <field name="line_ids" position="attributes">
                 <attribute name="context">
                     {
@@ -132,8 +128,8 @@
                     groups="operating_unit.group_multi_operating_unit"
                 />
             </xpath>
-            <xpath
-                expr="//field[@name='line_ids']/tree/field[@name='analytic_account_id']"
+            <!-- <xpath
+                expr="//field[@name='line_ids']/tree/field[@name='analytic_distribution']"
                 position="attributes"
             >
                 <attribute name="domain">
@@ -144,7 +140,7 @@
                 </attribute>
             </xpath>
             <xpath
-                expr="//field[@name='line_ids']/form/group/field[@name='analytic_account_id']"
+                expr="//field[@name='line_ids']/form/group/field[@name='analytic_distribution']"
                 position="attributes"
             >
                 <attribute name="domain">
@@ -152,7 +148,7 @@
                     context.get('default_operating_unit_id', False)),
                     ('operating_unit_ids', '=', False)]
                 </attribute>
-            </xpath>
+            </xpath> -->
         </field>
     </record>
     <record id="view_invoice_tree" model="ir.ui.view">

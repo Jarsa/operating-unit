@@ -88,11 +88,9 @@ class AccountMove(models.Model):
 
     @api.onchange("invoice_line_ids")
     def _onchange_invoice_line_ids(self):
-        res = super()._onchange_invoice_line_ids()
         if self.operating_unit_id:
             for line in self.line_ids:
                 line.operating_unit_id = self.operating_unit_id
-        return res
 
     @api.onchange("operating_unit_id")
     def _onchange_operating_unit(self):
@@ -190,7 +188,7 @@ class AccountMove(models.Model):
 
         return super()._post(soft)
 
-    def _check_balanced(self):
+    def _check_balanced(self, container):
         if self.env.context.get("wip"):
             return True
         return super()._check_balanced()
