@@ -191,7 +191,7 @@ class AccountMove(models.Model):
     def _check_balanced(self, container):
         if self.env.context.get("wip"):
             return True
-        return super()._check_balanced()
+        return super()._check_balanced(container)
 
     @api.constrains("line_ids")
     def _check_ou(self):
