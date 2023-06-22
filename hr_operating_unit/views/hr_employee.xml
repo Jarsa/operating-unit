@@ -25,6 +25,7 @@
                     name="default_operating_unit_id"
                     domain="[('id', 'in', operating_unit_ids)]"
                     options="{'no_create': True}"
+                    groups="operating_unit.group_multi_operating_unit"
                 />
             </field>
             <field name="company_id" position="after">
