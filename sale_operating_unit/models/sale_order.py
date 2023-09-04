@@ -69,7 +69,16 @@ class SaleOrder(models.Model):
     def _prepare_invoice(self):
         self.ensure_one()
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
-        invoice_vals["operating_unit_id"] = self.operating_unit_id.id
+        invoice_vals.update({
+            "operating_unit_id": self.operating_unit_id.id,
+            "journal_id": self.env["account.journal"].search(
+                [
+                    ("operating_unit_id", "=", self.operating_unit_id.id),
+                    ("type", "=", "sale"),
+                ],
+                limit=1,
+            ).id,
+        })
         return invoice_vals
 
 
@@ -81,3 +90,12 @@ class SaleOrderLine(models.Model):
         string="Operating Unit",
         store=True,
     )
+
+    def _prepare_invoice_line(self, **optional_values):
+        invoice_line_vals = super()._prepare_invoice_line(**optional_values)
+        invoice_line_vals.update(
+            {
+                "operating_unit_id": self.order_id.operating_unit_id.id,
+            }
+        )
+        return invoice_line_vals
