@@ -21,8 +21,8 @@ class PosSession(models.Model):
             values["operating_unit_id"] = pos_config.operating_unit_id.id
         return super().create(values)
 
-    def _get_sale_vals(self, key, amount, amount_converted):
-        res = super()._get_sale_vals(key, amount, amount_converted)
+    def _get_sale_vals(self, key, amount, amount_converted, tax_amount):
+        res = super()._get_sale_vals(key, amount, amount_converted, tax_amount)
         move = self.env["account.move"].browse(res["move_id"])
         move.write({"operating_unit_id": self.operating_unit_id.id})
         res["operating_unit_id"] = self.operating_unit_id.id
