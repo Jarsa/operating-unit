@@ -50,7 +50,21 @@ class PurchaseOrder(models.Model):
 
     def _prepare_invoice(self):
         invoice_vals = super()._prepare_invoice()
-        invoice_vals["operating_unit_id"] = self.operating_unit_id.id
+        journal = self.env["account.journal"].search(
+            [
+                ("operating_unit_id", "=", self.operating_unit_id.id),
+                ("type", "=", "purchase"),
+            ],
+            limit=1,
+        )
+        if not journal:
+            raise ValidationError(
+                _("You need to create a purchase journal for this operating unit.")
+            )
+        invoice_vals.update({
+            "journal_id": journal.id,
+            "operating_unit_id": self.operating_unit_id.id,
+        })
         return invoice_vals
 
 
