@@ -2,7 +2,6 @@
 # © 2019 Serpent Consulting Services Pvt. Ltd.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
-from contextlib import contextmanager
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -182,20 +181,15 @@ class AccountMove(models.Model):
                     move, ou_id, ou_balances
                 )
                 if line_data:
-                    amls.append(ml_obj.with_context(wip=True).create(line_data))
+                    amls.append(
+                        ml_obj.with_context(check_move_validity=True).create(line_data)
+                    )
             if amls:
-                move.with_context(wip=False).write(
+                move.with_context(check_move_validity=False).write(
                     {"line_ids": [(4, aml.id) for aml in amls]}
                 )
 
         return super()._post(soft)
-
-    @contextmanager
-    def _check_balanced(self, container):
-        if self.env.context.get("wip"):
-            yield
-        else:
-            yield super()._check_balanced(container)
 
     @api.constrains("line_ids")
     def _check_ou(self):
