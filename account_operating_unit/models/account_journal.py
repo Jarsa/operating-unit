@@ -8,9 +8,14 @@ from odoo.exceptions import UserError
 
 class AccountJournal(models.Model):
     _inherit = "account.journal"
+    
+    @api.model
+    def _default_operating_unit_id(self):
+        return self.env["res.users"].operating_unit_default_get()
 
     operating_unit_id = fields.Many2one(
         comodel_name="operating.unit",
+        default=_default_operating_unit_id,
         help="Operating Unit that will be used in payments, "
         "when this journal is used.",
     )
