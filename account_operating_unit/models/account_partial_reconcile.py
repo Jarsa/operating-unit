@@ -30,3 +30,9 @@ class AccountPartialReconcile(models.Model):
         )
         res.update({"operating_unit_id": tax_line.operating_unit_id.id})
         return res
+
+    @api.model
+    def _prepare_cash_basis_counterpart_base_line_vals(self, cb_base_line_vals):
+        res = super()._prepare_cash_basis_counterpart_base_line_vals(cb_base_line_vals)
+        res.update({"operating_unit_id": cb_base_line_vals["operating_unit_id"]})
+        return res
