@@ -67,7 +67,7 @@ class AccountMoveLine(models.Model):
 
     def _create_exchange_difference_move(self):
         res = super()._create_exchange_difference_move()
-        if res and self.operating_unit_id:
+        if res and self.operating_unit_id and len(self.operating_unit_id) == 1:
             res.operating_unit_id = self.operating_unit_id
             res.line_ids.write({"operating_unit_id": self.operating_unit_id.id})
         return res
