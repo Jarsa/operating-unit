@@ -80,6 +80,18 @@ class SaleOrder(models.Model):
         self.ensure_one()
         invoice_vals = super()._prepare_invoice()
         invoice_vals["operating_unit_id"] = self.operating_unit_id.id
+        invoice_vals["journal_id"] = (
+            self.env["account.journal"]
+            .search(
+                [
+                    ("operating_unit_id", "=", self.operating_unit_id.id),
+                    ("company_id", "=", self.company_id.id),
+                    ("type", "=", "sale"),
+                ],
+                limit=1,
+            )
+            .id
+        )
         return invoice_vals
 
 
