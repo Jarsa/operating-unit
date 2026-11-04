@@ -123,6 +123,7 @@ msgid "OU-Balancing"
 msgstr "Equilibrio de OU"
 
 #. module: account_operating_unit
+#: model:ir.model.fields,field_description:account_operating_unit.field_account_analytic_line__operating_unit_id
 #: model:ir.model.fields,field_description:account_operating_unit.field_account_bank_statement_line__operating_unit_id
 #: model:ir.model.fields,field_description:account_operating_unit.field_account_invoice_report__operating_unit_id
 #: model:ir.model.fields,field_description:account_operating_unit.field_account_journal__operating_unit_id
