@@ -2,7 +2,7 @@
 
 {
     "name": "HR Timesheet Operating Unit",
-    "version": "17.0.1.0.0",
+    "version": "20.0.1.0.0",
     "author": "Jarsa, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/operating-unit",

@@ -14,8 +14,7 @@
                     groups="operating_unit.group_multi_operating_unit"
                 />
             </xpath>
-            <xpath expr="//group[@name='groupby']" position="inside">
-                <separator />
+            <xpath expr="//filter[@name='group_date']" position="after">
                 <filter
                     name="operating_unit_id"
                     string="Operating Unit"

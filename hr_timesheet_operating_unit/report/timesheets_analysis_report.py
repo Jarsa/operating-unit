@@ -1,6 +1,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
+from odoo.tools import SQL
 
 
 class TimesheetsAnalysisReport(models.Model):
@@ -10,6 +11,4 @@ class TimesheetsAnalysisReport(models.Model):
 
     @api.model
     def _select(self):
-        res = super()._select()
-        res += ", A.operating_unit_id AS operating_unit_id"
-        return res
+        return SQL("%s, A.operating_unit_id AS operating_unit_id", super()._select())
